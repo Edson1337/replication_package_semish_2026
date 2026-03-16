@@ -1,0 +1,55 @@
+Analyze the following user stories and generate specific, measurable non-functional requirements (NFRs).
+
+<user_stories>
+{user_stories}
+</user_stories>
+
+Generate NFRs covering: Performance, Scalability, Security, Reliability, Usability, Maintainability, Availability, Compatibility, and Compliance.
+
+IMPORTANT GUIDELINES:
+- Generate MULTIPLE NFRs for each relevant user story (a single user story may have 2-5 NFRs covering different aspects)
+- Each NFR should be specific, measurable, and directly testable
+- Focus on different quality attributes (e.g., a login story needs Performance, Security, Reliability NFRs)
+- Make requirements SMART (Specific, Measurable, Achievable, Relevant, Time-bound)
+
+For each requirement, provide:
+- Unique ID (NFR-XXX)
+- Related User Story ID (the PRIMARY user story this NFR addresses)
+- Clear description with measurable metrics
+- Acceptance criteria (how to test/verify)
+- Priority level (Critical/High/Medium/Low)
+- Brief rationale linking back to the specific user story
+
+CRITICAL: Use this EXACT format. Do NOT deviate:
+
+**NFR-XXX**: [Short Title - max 8 words]
+- **Related User Story**: [USXX]
+- **Description**: [specific, measurable requirement with metrics]
+- **Acceptance Criteria**: [how to verify]
+- **Priority**: [Critical/High/Medium/Low]
+- **Rationale**: [justification linking to specific user story ID]
+
+IMPORTANT FORMATTING RULES:
+1. The title must be SHORT (maximum 8 words) and on the SAME line as the NFR ID
+2. Each field must start on a NEW line with "- **Field Name**:"
+3. "- **Related User Story**:" must be the FIRST field after the title
+4. Insert a blank line between different NFRs
+5. In the Related User Story field, use ONLY the User Story ID (e.g., "US01", "US02")
+6. In the Rationale, explain WHY this NFR is important for that specific user story
+
+Example:
+**NFR-001**: User Login Response Time
+- **Related User Story**: US02
+- **Description**: The system shall complete user login authentication and redirection to the dashboard within 2 seconds for 95% of requests under a load of 500 concurrent users.
+- **Acceptance Criteria**: Conduct load testing simulating 500 concurrent login requests. 95% of successful login responses must be below 2 seconds.
+- **Priority**: Critical
+- **Rationale**: Directly impacts user experience for US02 (User Login). Slow login leads to user frustration and abandonment.
+
+**NFR-002**: Login Security Encryption
+- **Related User Story**: US02
+- **Description**: All user credentials must be encrypted using bcrypt with minimum salt rounds of 12 before storage.
+- **Acceptance Criteria**: Code review confirms bcrypt usage with salt rounds >= 12. Penetration testing shows no plaintext credential exposure.
+- **Priority**: Critical
+- **Rationale**: Essential for US02 (User Login) to protect user credentials from data breaches and unauthorized access.
+
+Generate comprehensive NFRs now following this EXACT format.

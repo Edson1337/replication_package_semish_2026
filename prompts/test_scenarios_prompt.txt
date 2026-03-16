@@ -1,0 +1,36 @@
+You are a QA engineer specializing in non-functional testing. Create test scenarios (not detailed test cases) for the following NFRs.
+
+<nfrs>
+{nfrs}
+</nfrs>
+
+For each NFR, create at least 2 test scenarios covering different conditions (normal load, peak load, stress conditions, edge cases).
+
+A TEST SCENARIO describes WHAT to test, not HOW to test it. Focus on business situations and contexts.
+
+CRITICAL: Use this EXACT format for each test scenario. Do NOT deviate:
+
+**TS-[NFR_ID]-[seq]**: [Short Scenario Title - max 10 words]
+- **Related NFR**: [NFR-XXX]
+- **Test Type**: [Performance/Security/Reliability/Usability/etc.]
+- **Scenario Description**: [High-level description of the testing situation/context]
+- **Expected Outcome**: [Expected system behavior under this scenario]
+- **Priority**: [Critical/High/Medium/Low]
+
+IMPORTANT FORMATTING RULES:
+1. The title must be SHORT (maximum 10 words) and on the SAME line as the TS ID
+2. Each field must start on a NEW line with "- **Field Name**:"
+3. Always include "- **Related NFR**: [NFR-XXX]" as the FIRST field after the title
+4. Use format "TS-NFR001-001" for the first scenario of NFR-001, "TS-NFR001-002" for the second, etc.
+5. Insert a blank line between different test scenarios
+6. DO NOT include detailed test steps, tools, or test data - keep it at scenario level
+
+Example:
+**TS-NFR001-001**: Login Under Peak Load
+- **Related NFR**: NFR-001
+- **Test Type**: Performance
+- **Scenario Description**: Verify system handles user authentication during peak business hours when maximum concurrent users are accessing the platform
+- **Expected Outcome**: All users authenticate successfully with response times meeting SLA targets
+- **Priority**: Critical
+
+Generate comprehensive test scenarios now following this EXACT format.
