@@ -1,0 +1,118 @@
+[
+  {
+    "id": "US01",
+    "title": "List sponsors",
+    "story": "As a anonymoususer, I want to view a list of sponsors, so that I can thank all the awesome sponsors.",
+    "acceptance_criteria": [
+      "I can thank all the awesome sponsors.",
+      "System displays list with all relevant items",
+      "List is sortable and filterable",
+      "Users can navigate through paginated results"
+    ],
+    "priority": "Medium",
+    "story_points": 3
+  },
+  {
+    "id": "US09",
+    "title": "Cancellation terms",
+    "story": "As a trainee, I want to must accept the cancellation terms with a checkbox, so that they can be accountable..",
+    "acceptance_criteria": [
+      "They can be accountable.."
+    ],
+    "priority": "High",
+    "story_points": 4
+  },
+  {
+    "id": "US11",
+    "title": "Add event to schedule",
+    "story": "As a trainee, I want to add to \"my schedule\" if there is a schedule feature on the site, so that they can schedule their event experience.",
+    "acceptance_criteria": [
+      "They can schedule their event experience."
+    ],
+    "priority": "Low",
+    "story_points": 4
+  },
+  {
+    "id": "US25",
+    "title": "Venue description",
+    "story": "As a anonymoususer, I want to view venue details, so that I can get a sense of the location and see the events happening there.",
+    "acceptance_criteria": [
+      "I can get a sense of the location and see the events happening there."
+    ],
+    "priority": "Medium",
+    "story_points": 4
+  },
+  {
+    "id": "US30",
+    "title": "Process payment",
+    "story": "As a authenticateduser, I want to Enter payment information and have my card charged for an individual sponsorship, so that I can pay for an individual sponsorship.",
+    "acceptance_criteria": [
+      "I can pay for an individual sponsorship.",
+      "Payment information is securely processed",
+      "Transaction confirmation is sent to user",
+      "Failed transactions display appropriate error messages"
+    ],
+    "priority": "High",
+    "story_points": 8
+  },
+  {
+    "id": "US31",
+    "title": "Assign sponsors",
+    "story": "As a sponsor, I want to link BADCamp attendees to my sponsorship page, so that I can show off our level of attendance.",
+    "acceptance_criteria": [
+      "I can show off our level of attendance."
+    ],
+    "priority": "Medium",
+    "story_points": 5
+  },
+  {
+    "id": "US34",
+    "title": "Tag posts",
+    "story": "As a administrator, I want to tag my blog posts for consumption by Drupal Planet, so that they will be listed on the Drupal Planet blog.",
+    "acceptance_criteria": [
+      "They will be listed on the drupal planet blog."
+    ],
+    "priority": "Low",
+    "story_points": 4
+  },
+  {
+    "id": "US40",
+    "title": "View events",
+    "story": "As a attendee, I want to see what summits I'm signed up for, so that I can confirm my attendence and prevent myself from accidentally double-booking with a training or another summit.",
+    "acceptance_criteria": [
+      "I can confirm my attendence and prevent myself from accidentally double-booking with a training or another summit."
+    ],
+    "priority": "Medium",
+    "story_points": 4
+  },
+  {
+    "id": "US52",
+    "title": "Post job listing",
+    "story": "As a sponsor, I want to post a job, so that I can hire top-tier Drupal talent.",
+    "acceptance_criteria": [
+      "I can hire top-tier drupal talent."
+    ],
+    "priority": "Medium",
+    "story_points": 4
+  },
+  {
+    "id": "US58",
+    "title": "Accept session",
+    "story": "As a administrator, I want to mark a session as accepted, so that I can populate the schedule .",
+    "acceptance_criteria": [
+      "I can populate the schedule ."
+    ],
+    "priority": "Medium",
+    "story_points": 4
+  },
+  {
+    "id": "US62",
+    "title": "Speaker registration",
+    "story": "As a anonymoususer, I want to register to speak at BADCamp, so that I submit a session.",
+    "acceptance_criteria": [
+      "I submit a session."
+    ],
+    "priority": "Medium",
+    "story_points": 4
+  }
+]

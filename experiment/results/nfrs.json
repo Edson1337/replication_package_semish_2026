@@ -1,0 +1,252 @@
+[
+  {
+    "id": "NFR-001",
+    "title": "Sponsor List Scalability",
+    "description": "The system shall maintain sub-2-second response times for paginated sponsor lists even with 500 active sponsors and 100,000 unique monthly anonymous users viewing the page.",
+    "acceptance_criteria": "Load testing with a simulated dataset of 500 sponsors and 100,000 unique monthly user profiles (simulated over a day) viewing the sponsor list, ensuring 95% of requests complete within 2 seconds.",
+    "priority": "Medium",
+    "rationale": "US01 (List sponsors) needs to be viewable by many users without performance degradation, especially as the number of sponsors grows, ensuring a consistent user experience.",
+    "category": "General",
+    "source_user_story_id": "US01"
+  },
+  {
+    "id": "NFR-002",
+    "title": "Sponsor List Cross-Browser Compatibility",
+    "description": "The sponsor list, including sorting, filtering, and pagination, shall render correctly and be fully functional on the latest stable versions of Chrome, Firefox, Safari, and Edge, as well as mobile equivalents.",
+    "acceptance_criteria": "Manual and automated UI testing across specified browsers and mobile devices (iOS Safari, Android Chrome) confirms no layout issues, broken functionality, or unresponsive elements for US01.",
+    "priority": "Medium",
+    "rationale": "US01 (List sponsors) is for anonymous users, implying broad accessibility. Incompatible display on common browsers would prevent users from effectively viewing and interacting with the list.",
+    "category": "General",
+    "source_user_story_id": "US01"
+  },
+  {
+    "id": "NFR-003",
+    "title": "Cancellation Terms Acceptance Reliability",
+    "description": "The acceptance status of cancellation terms (checkbox state) shall be accurately recorded and permanently associated with the trainee's account for all successful submissions.",
+    "acceptance_criteria": "For 100% of successful trainee registrations, verify through database inspection that the 'cancellation_terms_accepted' flag is set to true and remains immutable after acceptance.",
+    "priority": "High",
+    "rationale": "For US09 (Cancellation terms), accountability relies on the certainty that the trainee's acceptance is reliably recorded and cannot be lost or altered, which is critical for legal and operational reasons.",
+    "category": "General",
+    "source_user_story_id": "US09"
+  },
+  {
+    "id": "NFR-004",
+    "title": "Cancellation Terms Data Integrity",
+    "description": "The system shall prevent unauthorized modification or deletion of a trainee's acceptance of cancellation terms once recorded.",
+    "acceptance_criteria": "Attempt to modify or delete the acceptance status of a trainee's cancellation terms directly via API calls or database manipulation (excluding administrative deletion for support cases). Verify all attempts are blocked or logged as unauthorized.",
+    "priority": "High",
+    "rationale": "US09 (Cancellation terms) relies on accountability. Ensuring data integrity prevents malicious or accidental tampering with acceptance records, which is crucial for legal defensibility.",
+    "category": "General",
+    "source_user_story_id": "US09"
+  },
+  {
+    "id": "NFR-005",
+    "title": "Event Scheduling Reliability",
+    "description": "When a trainee adds an event to their schedule, the system shall successfully persist the event to the trainee's schedule and reflect it accurately within 0.5 seconds for 100% of valid requests.",
+    "acceptance_criteria": "Conduct functional tests where 100 trainee users simultaneously add an event to their schedule. Verify that all events are correctly added and immediately visible in \"my schedule\" without data loss or conflicts.",
+    "priority": "Low",
+    "rationale": "For US11 (Add event to schedule), trainees need confidence that their schedule changes are saved correctly and immediately, preventing confusion or double-bookings.",
+    "category": "General",
+    "source_user_story_id": "US11"
+  },
+  {
+    "id": "NFR-006",
+    "title": "Event Scheduling Availability",
+    "description": "The \"Add to My Schedule\" feature shall have an uptime of 99.9% during the event registration and event period.",
+    "acceptance_criteria": "Monitor the availability and functionality of the \"Add to My Schedule\" feature using automated uptime monitoring tools over a 30-day period.",
+    "priority": "Medium",
+    "rationale": "US11 (Add event to schedule) relies on the feature being consistently available when trainees wish to manage their schedule, preventing missed opportunities or frustration.",
+    "category": "General",
+    "source_user_story_id": "US11"
+  },
+  {
+    "id": "NFR-007",
+    "title": "Venue Details Page Performance",
+    "description": "The venue details page, including images and embedded maps, shall fully load and be interactive within 3 seconds for 90% of anonymous users under normal load.",
+    "acceptance_criteria": "Utilize browser developer tools and performance testing (e.g., Lighthouse) to measure the Time to Interactive (TTI) for the venue details page for 90% of requests, ensuring it is under 3 seconds.",
+    "priority": "Medium",
+    "rationale": "For US25 (Venue description), anonymous users expect a fast loading experience. Slow pages, especially with rich media, can deter engagement and make it difficult to get a sense of the location.",
+    "category": "General",
+    "source_user_story_id": "US25"
+  },
+  {
+    "id": "NFR-008",
+    "title": "Venue Details Content Accessibility",
+    "description": "The venue details content (text, images, map if applicable) shall meet WCAG 2.1 Level AA guidelines to ensure accessibility for users with disabilities.",
+    "acceptance_criteria": "Conduct an accessibility audit using automated tools (e.g., axe-core) and manual review against WCAG 2.1 Level AA guidelines for US25. All detected violations must be remediated.",
+    "priority": "Medium",
+    "rationale": "US25 (Venue description) aims to provide location information to all users. Meeting accessibility standards ensures that users with visual or other impairments can also \"get a sense of the location.\"",
+    "category": "General",
+    "source_user_story_id": "US25"
+  },
+  {
+    "id": "NFR-009",
+    "title": "Payment Information Security (PCI DSS)",
+    "description": "The system shall process, store (if applicable, in encrypted form), and transmit payment card information in a manner compliant with PCI DSS v3.2.1 requirements, including encryption in transit (TLS 1.2+) and at rest (AES-256).",
+    "acceptance_criteria": "Conduct a PCI DSS compliance audit performed by a certified QSA. All identified vulnerabilities and non-conformities related to US30 payment processing must be addressed and verified.",
+    "priority": "Critical",
+    "rationale": "US30 (Process payment) involves sensitive financial data. PCI DSS compliance is non-negotiable for protecting user payment information and avoiding legal and financial repercussions.",
+    "category": "General",
+    "source_user_story_id": "US30"
+  },
+  {
+    "id": "NFR-010",
+    "title": "Payment Transaction Reliability",
+    "description": "The payment processing system shall ensure that 100% of valid payment attempts are either successfully processed with a confirmed charge or clearly fail with an appropriate error, preventing partial charges or ambiguous states.",
+    "acceptance_criteria": "Perform extensive functional and negative testing, including network interruptions, duplicate submissions, and invalid card data. Verify that for every transaction attempt, the system reaches a definitive success or failure state, and the user receives correct feedback, with no phantom charges.",
+    "priority": "Critical",
+    "rationale": "For US30 (Process payment), reliability is paramount. Ambiguous transaction states lead to user distrust, support overhead, and potential financial discrepancies.",
+    "category": "General",
+    "source_user_story_id": "US30"
+  },
+  {
+    "id": "NFR-011",
+    "title": "Payment Processing Response Time",
+    "description": "The system shall complete the payment authorization and confirmation process, including sending a transaction confirmation, within 5 seconds for 98% of successful transactions.",
+    "acceptance_criteria": "Monitor payment gateway response times and internal processing logs. 98% of transactions initiated via US30 must show a completion time (from submission to confirmation) of under 5 seconds.",
+    "priority": "High",
+    "rationale": "US30 (Process payment) is a critical user action. Slow payment processing can lead to user abandonment, frustration, and a perception of unreliability.",
+    "category": "General",
+    "source_user_story_id": "US30"
+  },
+  {
+    "id": "NFR-012",
+    "title": "Payment Error Messaging Usability",
+    "description": "For any failed payment transaction, the system shall display a specific, user-understandable error message that clearly indicates the reason for failure (e.g., \"Card declined,\" \"Insufficient funds,\" \"Invalid card number\").",
+    "acceptance_criteria": "Test payment attempts with various invalid scenarios (e.g., expired card, incorrect CVC, declined by bank). For each scenario, verify that the displayed error message is specific, actionable, and user-friendly, as per US30's acceptance criteria.",
+    "priority": "High",
+    "rationale": "US30 (Process payment) explicitly requires appropriate error messages for failed transactions. Clear feedback helps users rectify issues and proceed, improving the overall payment experience.",
+    "category": "General",
+    "source_user_story_id": "US30"
+  },
+  {
+    "id": "NFR-013",
+    "title": "Sponsor Link Access Control",
+    "description": "Only authenticated users with the 'sponsor' role shall be able to create, modify, or delete links to their sponsorship page and associate attendees.",
+    "acceptance_criteria": "Attempt to perform sponsor linking actions (create, modify, delete) while logged in as an 'anonymoususer', 'authenticateduser', 'trainee', or another non-'sponsor' role. Verify all such attempts are denied with an \"Access Denied\" error.",
+    "priority": "High",
+    "rationale": "US31 (Assign sponsors) involves displaying potentially sensitive attendance data. Strong access control ensures that only authorized sponsors can manage this information, preventing data misuse or misrepresentation.",
+    "category": "General",
+    "source_user_story_id": "US31"
+  },
+  {
+    "id": "NFR-014",
+    "title": "Sponsor Link Data Reliability",
+    "description": "Links created by sponsors and their associated attendance data shall persist accurately and be accessible from the sponsorship page without degradation for the entire event duration (including post-event viewing period of 6 months).",
+    "acceptance_criteria": "After a sponsor creates links and associates attendees, verify the data immediately and at 30-day intervals for 6 months post-event. Confirm 100% accuracy and availability of all linked information.",
+    "priority": "Medium",
+    "rationale": "US31 (Assign sponsors) relies on the persistence and accuracy of linked data to \"show off our level of attendance.\" Data loss or corruption would undermine the sponsor's goal.",
+    "category": "General",
+    "source_user_story_id": "US31"
+  },
+  {
+    "id": "NFR-015",
+    "title": "Tagging System Maintainability",
+    "description": "The tagging system for blog posts shall be implemented using a standard, well-documented API or framework component, allowing for easy updates and extensions by a Drupal developer.",
+    "acceptance_criteria": "Conduct a code review to confirm adherence to Drupal coding standards and use of core/contributed modules for tagging. A new tag vocabulary or term should be addable by a developer in under 15 minutes.",
+    "priority": "Low",
+    "rationale": "US34 (Tag posts) is an administrative function. Good maintainability ensures that administrators can continue to effectively manage tags and integrate with external platforms like Drupal Planet without significant development overhead.",
+    "category": "General",
+    "source_user_story_id": "US34"
+  },
+  {
+    "id": "NFR-016",
+    "title": "Tag Publishing Reliability",
+    "description": "Once an administrator tags a blog post, the system shall ensure that the tag is correctly associated with the post and reflected in the relevant RSS feed or API endpoint for Drupal Planet within 1 minute of publication.",
+    "acceptance_criteria": "Publish 10 blog posts with tags relevant for Drupal Planet. Within 1 minute of publication, verify via direct inspection of the generated RSS feed or API response that all tags are correctly present.",
+    "priority": "Medium",
+    "rationale": "US34 (Tag posts) directly aims for posts to be listed on Drupal Planet. Reliable and timely tag application is essential for this outcome.",
+    "category": "General",
+    "source_user_story_id": "US34"
+  },
+  {
+    "id": "NFR-017",
+    "title": "User Event List Performance",
+    "description": "An attendee's list of signed-up summits shall load and display within 1.5 seconds for 95% of requests, even when the attendee is signed up for 20+ events.",
+    "acceptance_criteria": "Simulate a user logged in with 20+ assigned events. Conduct performance testing, ensuring 95% of requests to view \"my summits\" complete within 1.5 seconds under anticipated peak load.",
+    "priority": "Medium",
+    "rationale": "US40 (View events) is crucial for attendees to manage their schedule. A slow loading list would hinder their ability to confirm attendance and prevent double-booking.",
+    "category": "General",
+    "source_user_story_id": "US40"
+  },
+  {
+    "id": "NFR-018",
+    "title": "User Event List Data Accuracy",
+    "description": "The system shall display 100% accurate and up-to-date information regarding an attendee's signed-up summits, reflecting all confirmed registrations and cancellations without delay.",
+    "acceptance_criteria": "Conduct tests where attendees register for and cancel events. Immediately after each action, verify that their \"my summits\" list correctly reflects the changes. Ensure no outdated or incorrect entries are shown.",
+    "priority": "High",
+    "rationale": "US40 (View events) is for confirming attendance and preventing double-booking. Inaccurate data would directly defeat the purpose of the story, leading to confusion and scheduling errors.",
+    "category": "General",
+    "source_user_story_id": "US40"
+  },
+  {
+    "id": "NFR-019",
+    "title": "Job Listing Creation Security",
+    "description": "Only authenticated users with the 'sponsor' role shall be authorized to post new job listings.",
+    "acceptance_criteria": "Attempt to access the \"Post Job\" functionality and submit a job listing while logged in as an 'anonymoususer', 'authenticateduser', 'trainee', or another non-'sponsor' role. Verify all such attempts are denied.",
+    "priority": "High",
+    "rationale": "US52 (Post job listing) allows sponsors to advertise. Unauthorized posting could lead to spam or inappropriate content, harming the platform's reputation and sponsor value.",
+    "category": "General",
+    "source_user_story_id": "US52"
+  },
+  {
+    "id": "NFR-020",
+    "title": "Job Listing Data Persistence",
+    "description": "All submitted job listings shall be reliably stored and remain publicly visible (unless marked otherwise by the sponsor) for their specified duration, without accidental loss or corruption.",
+    "acceptance_criteria": "After a sponsor posts a job, verify its presence immediately, and then periodically (e.g., daily) for the listing's full duration. Simulate database backups and restores, ensuring job listings remain intact.",
+    "priority": "Medium",
+    "rationale": "For US52 (Post job listing), sponsors expect their advertisements to remain visible. Data loss or corruption would undermine their ability to hire and their value proposition.",
+    "category": "General",
+    "source_user_story_id": "US52"
+  },
+  {
+    "id": "NFR-021",
+    "title": "Session Acceptance Authorization",
+    "description": "Only authenticated users with the 'administrator' role shall be able to mark a session as accepted.",
+    "acceptance_criteria": "Attempt to change a session's status to 'accepted' while logged in as an 'anonymoususer', 'authenticateduser', 'trainee', 'sponsor', or any non-'administrator' role. Verify all such attempts are denied.",
+    "priority": "High",
+    "rationale": "US58 (Accept session) is a critical administrative function. Unauthorized users accepting sessions could lead to an unmanageable or inappropriate event schedule.",
+    "category": "General",
+    "source_user_story_id": "US58"
+  },
+  {
+    "id": "NFR-022",
+    "title": "Session Status Change Reliability",
+    "description": "When an administrator marks a session as accepted, the system shall reliably update the session's status and persist this change, making it immediately reflected across all relevant views and APIs, 100% of the time.",
+    "acceptance_criteria": "An administrator accepts 10 sessions. Verify via UI and API that all 10 sessions' statuses are correctly updated to 'accepted' and are immediately visible in schedule population features. Simulate system restart and confirm status persists.",
+    "priority": "Medium",
+    "rationale": "For US58 (Accept session), reliable and immediate status updates are essential for populating the schedule accurately and efficiently, preventing scheduling errors or discrepancies.",
+    "category": "General",
+    "source_user_story_id": "US58"
+  },
+  {
+    "id": "NFR-023",
+    "title": "Speaker Registration Data Security",
+    "description": "All speaker registration data, including personal information and session details, shall be encrypted in transit using TLS 1.2+ and stored at rest using AES-256 encryption.",
+    "acceptance_criteria": "Conduct a security audit and penetration test. Verify that all data submitted via US62 registration forms is encrypted during transmission and stored in an encrypted format in the database.",
+    "priority": "High",
+    "rationale": "US62 (Speaker registration) collects personal and session data. Protecting this information from unauthorized access is critical for privacy and security, building trust with speakers.",
+    "category": "General",
+    "source_user_story_id": "US62"
+  },
+  {
+    "id": "NFR-024",
+    "title": "Speaker Registration Form Reliability",
+    "description": "The speaker registration form shall reliably submit and save all submitted data for 100% of valid submissions, even under peak load conditions of 50 concurrent registrations.",
+    "acceptance_criteria": "Conduct load testing simulating 50 concurrent speaker registrations. Verify that 100% of valid submissions are successfully processed, and all data is accurately stored without loss or corruption.",
+    "priority": "High",
+    "rationale": "US62 (Speaker registration) is a critical initial step for speakers. Unreliable submission would lead to lost sessions, frustration, and significant administrative overhead.",
+    "category": "General",
+    "source_user_story_id": "US62"
+  },
+  {
+    "id": "NFR-025",
+    "title": "Speaker Registration Form Usability Feedback",
+    "description": "Upon successful submission of the speaker registration form, the system shall provide clear, immediate visual confirmation (e.g., a \"Thank You\" page or success message) to the user.",
+    "acceptance_criteria": "Perform functional testing of US62 registration. Verify that after every successful submission, the user is redirected to a confirmation page or shown a clear, persistent success message, with no ambiguity.",
+    "priority": "Medium",
+    "rationale": "For US62 (Speaker registration), clear feedback reassures the anonymous user that their submission was received, preventing multiple submissions or confusion.",
+    "category": "General",
+    "source_user_story_id": "US62"
+  }
+]

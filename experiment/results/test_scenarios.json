@@ -1,0 +1,443 @@
+[
+  {
+    "id": "TS-001",
+    "title": "Sponsor list performance with maximum sponsor data volume",
+    "test_type": "Performance (Scalability)",
+    "scenario_description": "Test sponsor list loading with a simulated dataset of 500 active sponsors and multiple pages, under moderate user load.",
+    "expected_outcome": "Paginated sponsor lists render within 2 seconds for 95% of requests.",
+    "priority": "Medium",
+    "source_nfr_id": "NFR-001"
+  },
+  {
+    "id": "TS-002",
+    "title": "Sponsor list rendering and functionality across desktop browsers",
+    "test_type": "Compatibility",
+    "scenario_description": "Verify the sponsor list, including sorting, filtering, and pagination, renders and functions correctly on Chrome, Firefox, Safari, and Edge (latest stable versions).",
+    "expected_outcome": "No layout issues, broken functionality, or unresponsive elements are observed on desktop browsers.",
+    "priority": "Medium",
+    "source_nfr_id": "NFR-002"
+  },
+  {
+    "id": "TS-003",
+    "title": "Sponsor list rendering and functionality on mobile devices",
+    "test_type": "Compatibility",
+    "scenario_description": "Verify the sponsor list displays and works correctly on mobile equivalents (iOS Safari, Android Chrome).",
+    "expected_outcome": "The sponsor list content is responsive, readable, and fully functional on specified mobile browsers.",
+    "priority": "Medium",
+    "source_nfr_id": "NFR-002"
+  },
+  {
+    "id": "TS-004",
+    "title": "Cancellation terms acceptance on successful trainee registration",
+    "test_type": "Reliability / Data Integrity",
+    "scenario_description": "A trainee successfully registers, explicitly accepting the cancellation terms during the process.",
+    "expected_outcome": "The 'cancellation_terms_accepted' flag is accurately set to true and permanently associated with the trainee's account.",
+    "priority": "High",
+    "source_nfr_id": "NFR-003"
+  },
+  {
+    "id": "TS-005",
+    "title": "Immutability of accepted cancellation terms after registration",
+    "test_type": "Reliability / Data Integrity",
+    "scenario_description": "After a trainee successfully accepts cancellation terms, attempt to modify the recorded status through standard application flows.",
+    "expected_outcome": "The 'cancellation_terms_accepted' status remains true and cannot be altered by the user or regular system operations.",
+    "priority": "High",
+    "source_nfr_id": "NFR-003"
+  },
+  {
+    "id": "TS-006",
+    "title": "Unauthorized API attempt to modify accepted cancellation terms",
+    "test_type": "Security / Data Integrity",
+    "scenario_description": "Attempt to change a trainee's 'cancellation_terms_accepted' status directly via an unauthenticated or unauthorized API call.",
+    "expected_outcome": "The modification attempt is rejected, and the system logs the unauthorized access attempt.",
+    "priority": "High",
+    "source_nfr_id": "NFR-004"
+  },
+  {
+    "id": "TS-007",
+    "title": "Direct database attempt to alter accepted cancellation terms",
+    "test_type": "Security / Data Integrity",
+    "scenario_description": "Attempt to modify or delete the 'cancellation_terms_accepted' flag for a trainee directly in the database using non-privileged access.",
+    "expected_outcome": "The modification or deletion attempt is blocked by database constraints or permissions, or detected and logged as unauthorized.",
+    "priority": "High",
+    "source_nfr_id": "NFR-004"
+  },
+  {
+    "id": "TS-008",
+    "title": "Event addition reliability under concurrent user activity",
+    "test_type": "Reliability / Performance",
+    "scenario_description": "Simulate 100 trainee users simultaneously adding events to their schedules.",
+    "expected_outcome": "All events are successfully added to each trainee's schedule, immediately visible, and no data loss or conflicts occur.",
+    "priority": "Low",
+    "source_nfr_id": "NFR-005"
+  },
+  {
+    "id": "TS-009",
+    "title": "Single event addition persistence and display speed",
+    "test_type": "Performance / Reliability",
+    "scenario_description": "A single trainee adds an event to their schedule and immediately navigates to \"my schedule\".",
+    "expected_outcome": "The event is successfully persisted and displayed in \"my schedule\" within 0.5 seconds.",
+    "priority": "Low",
+    "source_nfr_id": "NFR-005"
+  },
+  {
+    "id": "TS-010",
+    "title": "Availability of \"Add to My Schedule\" over extended period",
+    "test_type": "Availability",
+    "scenario_description": "Continuously monitor the \"Add to My Schedule\" feature for functionality and accessibility over a 30-day period.",
+    "expected_outcome": "The \"Add to My Schedule\" feature maintains at least 99.9% uptime throughout the monitoring period.",
+    "priority": "Medium",
+    "source_nfr_id": "NFR-006"
+  },
+  {
+    "id": "TS-011",
+    "title": "\"Add to My Schedule\" availability under peak load conditions",
+    "test_type": "Availability / Performance",
+    "scenario_description": "Monitor the availability of the \"Add to My Schedule\" feature during simulated peak event registration traffic.",
+    "expected_outcome": "The feature remains available and functional, sustaining 99.9% uptime even during periods of high concurrency.",
+    "priority": "Medium",
+    "source_nfr_id": "NFR-006"
+  },
+  {
+    "id": "TS-012",
+    "title": "Venue details page load time for anonymous users",
+    "test_type": "Performance",
+    "scenario_description": "An anonymous user accesses the venue details page under typical system load conditions.",
+    "expected_outcome": "The venue details page is fully loaded and interactive within 3 seconds for 90% of requests.",
+    "priority": "Medium",
+    "source_nfr_id": "NFR-007"
+  },
+  {
+    "id": "TS-013",
+    "title": "Venue page performance with heavy images and embedded map",
+    "test_type": "Performance",
+    "scenario_description": "Test the venue details page when it contains a high number of images and a complex embedded map, under normal user load.",
+    "expected_outcome": "Despite rich content, the page remains interactive within 3 seconds for 90% of anonymous user requests.",
+    "priority": "Medium",
+    "source_nfr_id": "NFR-007"
+  },
+  {
+    "id": "TS-014",
+    "title": "Automated accessibility scan of venue details page",
+    "test_type": "Accessibility",
+    "scenario_description": "Conduct an automated accessibility audit on the venue details page using tools like axe-core.",
+    "expected_outcome": "No critical or severe WCAG 2.1 Level AA violations are detected by automated tools.",
+    "priority": "Medium",
+    "source_nfr_id": "NFR-008"
+  },
+  {
+    "id": "TS-015",
+    "title": "Manual review of venue details content for WCAG compliance",
+    "test_type": "Accessibility",
+    "scenario_description": "Perform a manual accessibility review of the venue details page, focusing on keyboard navigation, semantic structure, and logical focus order.",
+    "expected_outcome": "The venue details content meets all applicable WCAG 2.1 Level AA guidelines, with all interactive elements navigable and perceivable.",
+    "priority": "Medium",
+    "source_nfr_id": "NFR-008"
+  },
+  {
+    "id": "TS-016",
+    "title": "Comprehensive PCI DSS compliance audit for payment system",
+    "test_type": "Security / Compliance",
+    "scenario_description": "A certified QSA conducts a full PCI DSS v3.2.1 compliance audit of the payment processing system.",
+    "expected_outcome": "The system passes the PCI DSS audit, with no critical non-conformities identified regarding payment card handling.",
+    "priority": "Critical",
+    "source_nfr_id": "NFR-009"
+  },
+  {
+    "id": "TS-017",
+    "title": "Verification of payment data encryption in transit and at rest",
+    "test_type": "Security",
+    "scenario_description": "Inspect network traffic during payment submission and analyze the storage of payment-related data in the database.",
+    "expected_outcome": "Payment card information is encrypted using TLS 1.2+ during transit and AES-256 at rest (if stored).",
+    "priority": "Critical",
+    "source_nfr_id": "NFR-009"
+  },
+  {
+    "id": "TS-018",
+    "title": "Definitive outcome for valid and invalid payment attempts",
+    "test_type": "Reliability / Functional",
+    "scenario_description": "Process a mix of valid payment attempts and deliberately invalid ones (e.g., incorrect CVC, expired card, insufficient funds).",
+    "expected_outcome": "Every valid attempt reaches a confirmed success, and every invalid attempt reaches a clear, documented failure state without ambiguity.",
+    "priority": "Critical",
+    "source_nfr_id": "NFR-010"
+  },
+  {
+    "id": "TS-019",
+    "title": "Payment system behavior during network interruptions",
+    "test_type": "Reliability",
+    "scenario_description": "Simulate network connectivity issues or gateway timeouts during various stages of the payment transaction.",
+    "expected_outcome": "The system consistently resolves to either a successful charge or a definite failure with no partial charges or phantom transactions.",
+    "priority": "Critical",
+    "source_nfr_id": "NFR-010"
+  },
+  {
+    "id": "TS-020",
+    "title": "Payment completion time under typical transaction volume",
+    "test_type": "Performance",
+    "scenario_description": "Process a batch of successful payment transactions under average system load and monitor completion times.",
+    "expected_outcome": "98% of successful payment transactions, from submission to confirmation, complete within 5 seconds.",
+    "priority": "High",
+    "source_nfr_id": "NFR-011"
+  },
+  {
+    "id": "TS-021",
+    "title": "Payment completion time under high concurrent transactions",
+    "test_type": "Performance (Load)",
+    "scenario_description": "Simulate a peak period of high concurrent payment submissions by multiple users.",
+    "expected_outcome": "Even under peak load, 98% of successful transactions achieve completion within 5 seconds.",
+    "priority": "High",
+    "source_nfr_id": "NFR-011"
+  },
+  {
+    "id": "TS-022",
+    "title": "User-friendly error messages for standard payment failures",
+    "test_type": "Usability / Functional",
+    "scenario_description": "Initiate payment attempts using scenarios such as an expired card, incorrect CVC, and intentionally insufficient funds.",
+    "expected_outcome": "The system displays clear, specific, and actionable error messages (e.g., \"Card expired,\" \"CVC incorrect\") for each failure type.",
+    "priority": "High",
+    "source_nfr_id": "NFR-012"
+  },
+  {
+    "id": "TS-023",
+    "title": "Specific error messages for less common payment failures",
+    "test_type": "Usability / Functional",
+    "scenario_description": "Initiate payment attempts simulating less common issues, such as card issuer specific declines or general processing errors.",
+    "expected_outcome": "The system provides informative error messages that help the user understand the issue, even if more generic (e.g., \"Transaction declined by bank\").",
+    "priority": "High",
+    "source_nfr_id": "NFR-012"
+  },
+  {
+    "id": "TS-024",
+    "title": "Anonymous user attempts sponsor link creation/modification",
+    "test_type": "Security / Access Control",
+    "scenario_description": "An unauthenticated (anonymous) user attempts to access or perform any sponsor linking actions (create, modify, delete).",
+    "expected_outcome": "All attempts are denied with an \"Access Denied\" error or equivalent, and no unauthorized action is performed.",
+    "priority": "High",
+    "source_nfr_id": "NFR-013"
+  },
+  {
+    "id": "TS-025",
+    "title": "Non-sponsor authenticated user attempts sponsor link actions",
+    "test_type": "Security / Access Control",
+    "scenario_description": "An authenticated user with 'trainee' or general 'authenticateduser' role attempts to create, modify, or delete sponsor links.",
+    "expected_outcome": "All attempts are denied with an \"Access Denied\" error, preventing any unauthorized sponsor linking actions.",
+    "priority": "High",
+    "source_nfr_id": "NFR-013"
+  },
+  {
+    "id": "TS-026",
+    "title": "Immediate persistence of newly created sponsor links and data",
+    "test_type": "Reliability / Data Integrity",
+    "scenario_description": "A sponsor creates new links and associates attendees with those links.",
+    "expected_outcome": "All created links and associated attendance data are immediately and accurately reflected on the sponsorship page.",
+    "priority": "Medium",
+    "source_nfr_id": "NFR-014"
+  },
+  {
+    "id": "TS-027",
+    "title": "Sponsor link and attendance data accessibility post-event",
+    "test_type": "Reliability / Data Integrity",
+    "scenario_description": "Verify the availability and accuracy of sponsor links and associated attendance data at 30-day intervals for 6 months after the event concludes.",
+    "expected_outcome": "All sponsor link and attendance data remains 100% accurate and accessible for the entire post-event viewing period.",
+    "priority": "Medium",
+    "source_nfr_id": "NFR-014"
+  },
+  {
+    "id": "TS-028",
+    "title": "Tagging system code adherence to Drupal standards",
+    "test_type": "Maintainability / Code Quality",
+    "scenario_description": "Conduct a code review of the tagging system implementation by an experienced Drupal developer.",
+    "expected_outcome": "The tagging system utilizes standard Drupal APIs/components and adheres to Drupal coding best practices, requiring no custom, difficult-to-maintain code.",
+    "priority": "Low",
+    "source_nfr_id": "NFR-015"
+  },
+  {
+    "id": "TS-029",
+    "title": "Ease of adding new tag terms to existing vocabulary",
+    "test_type": "Maintainability",
+    "scenario_description": "A Drupal developer attempts to add a new term to an existing tag vocabulary within the system.",
+    "expected_outcome": "The developer successfully adds the new tag term and verifies its functionality in under 15 minutes.",
+    "priority": "Low",
+    "source_nfr_id": "NFR-015"
+  },
+  {
+    "id": "TS-030",
+    "title": "Tag reflection for a single blog post after publication",
+    "test_type": "Reliability / Functional",
+    "scenario_description": "An administrator publishes a new blog post with relevant tags.",
+    "expected_outcome": "The tags are correctly associated with the post and appear in the relevant RSS feed or API endpoint for Drupal Planet within 1 minute.",
+    "priority": "Medium",
+    "source_nfr_id": "NFR-016"
+  },
+  {
+    "id": "TS-031",
+    "title": "Tag reflection for multiple blog posts published concurrently",
+    "test_type": "Reliability / Performance",
+    "scenario_description": "An administrator publishes 10 blog posts with distinct tags in quick succession.",
+    "expected_outcome": "All tags for all 10 posts are correctly associated and reflected in the Drupal Planet RSS feed or API within 1 minute of their respective publications.",
+    "priority": "Medium",
+    "source_nfr_id": "NFR-016"
+  },
+  {
+    "id": "TS-032",
+    "title": "Event list load time for user with many registered events",
+    "test_type": "Performance",
+    "scenario_description": "Simulate a user logged in with 20+ assigned events accessing their \"my summits\" page under anticipated peak load.",
+    "expected_outcome": "The user's event list loads and displays within 1.5 seconds for 95% of requests.",
+    "priority": "Medium",
+    "source_nfr_id": "NFR-017"
+  },
+  {
+    "id": "TS-033",
+    "title": "Event list load time for typical number of registered events",
+    "test_type": "Performance",
+    "scenario_description": "Simulate a user logged in with an average number of registered events (e.g., 5-10) accessing their \"my summits\" page under normal load.",
+    "expected_outcome": "The user's event list loads and displays well within 1.5 seconds for 95% of requests.",
+    "priority": "Medium",
+    "source_nfr_id": "NFR-017"
+  },
+  {
+    "id": "TS-034",
+    "title": "Immediate reflection of new event registrations in user list",
+    "test_type": "Data Accuracy / Functional",
+    "scenario_description": "An attendee successfully registers for a new event.",
+    "expected_outcome": "The newly registered event immediately appears correctly in the attendee's \"my summits\" list.",
+    "priority": "High",
+    "source_nfr_id": "NFR-018"
+  },
+  {
+    "id": "TS-035",
+    "title": "Immediate reflection of event cancellations in user list",
+    "test_type": "Data Accuracy / Functional",
+    "scenario_description": "An attendee successfully cancels their registration for an event.",
+    "expected_outcome": "The cancelled event is immediately removed or correctly marked as cancelled in the attendee's \"my summits\" list.",
+    "priority": "High",
+    "source_nfr_id": "NFR-018"
+  },
+  {
+    "id": "TS-036",
+    "title": "Anonymous user attempts to post a new job listing",
+    "test_type": "Security / Access Control",
+    "scenario_description": "An unauthenticated (anonymous) user attempts to access the \"Post Job\" functionality or submit a new job listing.",
+    "expected_outcome": "The anonymous user is denied access to the feature and cannot submit a job listing.",
+    "priority": "High",
+    "source_nfr_id": "NFR-019"
+  },
+  {
+    "id": "TS-037",
+    "title": "Non-sponsor authenticated user attempts to post a job",
+    "test_type": "Security / Access Control",
+    "scenario_description": "An authenticated user with a 'trainee' or general 'authenticateduser' role attempts to post a new job listing.",
+    "expected_outcome": "The non-'sponsor' authenticated user is denied access to the \"Post Job\" functionality and cannot submit a job listing.",
+    "priority": "High",
+    "source_nfr_id": "NFR-019"
+  },
+  {
+    "id": "TS-038",
+    "title": "Immediate storage and public visibility of new job listings",
+    "test_type": "Data Persistence / Reliability",
+    "scenario_description": "A sponsor successfully posts a new job listing, marked as publicly visible.",
+    "expected_outcome": "The job listing is immediately stored, correctly associated with the sponsor, and visible on the public job board.",
+    "priority": "Medium",
+    "source_nfr_id": "NFR-020"
+  },
+  {
+    "id": "TS-039",
+    "title": "Job listing persistence over its specified duration",
+    "test_type": "Data Persistence / Reliability",
+    "scenario_description": "Verify the presence and integrity of job listings periodically (e.g., daily) throughout their specified public duration.",
+    "expected_outcome": "All job listings remain accurately stored and publicly visible (if applicable) for their entire active period without loss or corruption.",
+    "priority": "Medium",
+    "source_nfr_id": "NFR-020"
+  },
+  {
+    "id": "TS-040",
+    "title": "Non-administrator user attempts to accept a session",
+    "test_type": "Security / Access Control",
+    "scenario_description": "An authenticated user (e.g., trainee, sponsor, or general authenticated user) attempts to change a session's status to 'accepted'.",
+    "expected_outcome": "The system denies the attempt with an \"Access Denied\" error or equivalent, preventing unauthorized session status changes.",
+    "priority": "High",
+    "source_nfr_id": "NFR-021"
+  },
+  {
+    "id": "TS-041",
+    "title": "Anonymous user attempts to accept a session",
+    "test_type": "Security / Access Control",
+    "scenario_description": "An unauthenticated (anonymous) user attempts to change a session's status to 'accepted' (e.g., via a direct API call).",
+    "expected_outcome": "The system denies the attempt, typically requiring authentication first, and prevents any unauthorized action.",
+    "priority": "High",
+    "source_nfr_id": "NFR-021"
+  },
+  {
+    "id": "TS-042",
+    "title": "Single session acceptance and immediate status reflection",
+    "test_type": "Reliability / Data Accuracy",
+    "scenario_description": "An administrator marks a single session as 'accepted' through the administrative interface.",
+    "expected_outcome": "The session's status is reliably updated to 'accepted', immediately reflected in all relevant UI views and API endpoints.",
+    "priority": "Medium",
+    "source_nfr_id": "NFR-022"
+  },
+  {
+    "id": "TS-043",
+    "title": "Multiple session acceptances and status persistence after restart",
+    "test_type": "Reliability / Data Persistence",
+    "scenario_description": "An administrator accepts 10 sessions. Immediately after, simulate a system restart or database failover.",
+    "expected_outcome": "All 10 sessions retain their 'accepted' status after system recovery, and the status is accurately reflected across all views.",
+    "priority": "Medium",
+    "source_nfr_id": "NFR-022"
+  },
+  {
+    "id": "TS-044",
+    "title": "Verification of speaker registration data encryption in transit",
+    "test_type": "Security",
+    "scenario_description": "A speaker submits their registration form. Network traffic is intercepted and analyzed during the submission.",
+    "expected_outcome": "All speaker registration data is transmitted encrypted using TLS 1.2 or a stronger protocol.",
+    "priority": "High",
+    "source_nfr_id": "NFR-023"
+  },
+  {
+    "id": "TS-045",
+    "title": "Verification of speaker registration data encryption at rest",
+    "test_type": "Security",
+    "scenario_description": "After a speaker successfully registers, attempt to access the stored registration data directly from the database.",
+    "expected_outcome": "Speaker registration data, including personal and session details, is stored in the database using AES-256 encryption.",
+    "priority": "High",
+    "source_nfr_id": "NFR-023"
+  },
+  {
+    "id": "TS-046",
+    "title": "Speaker registration reliability under 50 concurrent submissions",
+    "test_type": "Reliability / Performance (Load)",
+    "scenario_description": "Simulate 50 concurrent users successfully submitting valid speaker registration forms.",
+    "expected_outcome": "All 50 valid submissions are successfully processed, and all associated data is accurately stored without loss or corruption.",
+    "priority": "High",
+    "source_nfr_id": "NFR-024"
+  },
+  {
+    "id": "TS-047",
+    "title": "Single speaker registration form submission reliability",
+    "test_type": "Reliability / Functional",
+    "scenario_description": "A single user submits a valid speaker registration form under normal system load.",
+    "expected_outcome": "The form data is successfully processed, and all information is accurately stored without issues.",
+    "priority": "High",
+    "source_nfr_id": "NFR-024"
+  },
+  {
+    "id": "TS-048",
+    "title": "Clear visual confirmation after successful registration",
+    "test_type": "Usability / Functional",
+    "scenario_description": "A user successfully completes and submits the speaker registration form.",
+    "expected_outcome": "The user is immediately redirected to a dedicated \"Thank You\" or confirmation page, clearly indicating successful submission.",
+    "priority": "Medium",
+    "source_nfr_id": "NFR-025"
+  },
+  {
+    "id": "TS-049",
+    "title": "Immediate persistent success message after registration",
+    "test_type": "Usability / Functional",
+    "scenario_description": "A user successfully completes and submits the speaker registration form, where an inline message is expected.",
+    "expected_outcome": "A clear, prominent, and persistent success message appears on the page, confirming successful submission without requiring a page refresh.",
+    "priority": "Medium",
+    "source_nfr_id": "NFR-025"
+  }
+]
