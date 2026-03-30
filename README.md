@@ -104,9 +104,12 @@ This will:
 - **python-jira** — JIRA integration
 - **mcp** — Model Context Protocol for MCP tools
 
-## 🧪 Experiment Results
+## 🧪 Experiment Data
 
-The `experiments/results/` directory contains the outputs obtained from our experiment, where the pipeline generated a requirements document containing User Stories, NFRs, and Test Scenarios. This document (`requirements_document.pdf`) was used in the study conducted with software professionals to evaluate the quality of the generated artifacts.
+The `experiment/` directory contains all data related to the study conducted with software professionals, separated into:
+- `experiment/outputs/`: Tool-generated outputs (User Stories, NFRs, Test Scenarios) and the `requirements_document.pdf` used in the study.
+- `experiment/human_evaluation/`: Contains `Dataset_Classification_EN`, the manual classification of the user stories performed by the authors.
+- `experiment/survey_data/`: Contains `MIRA_Survey_Analysis_EN`, the raw responses and analysis from the QAs and Requirements Analysts evaluating the generated artifacts.
 
 ## License
 
