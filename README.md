@@ -26,7 +26,6 @@ This repository contains the multi-agent architecture implementation using CrewA
 This project uses `uv` for dependency management.
 
 ```bash
-# In the multi-agents-core folder
 uv sync
 ```
 
