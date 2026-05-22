@@ -2,7 +2,7 @@
 
 Replication package submitted to **SEMISH — Seminário Integrado de Software e Hardware**, part of **CSBC 2026 — Congresso da Sociedade Brasileira de Computação**.
 
-This repository contains the multi-agent architecture implementation using CrewAI for the MIRA project, which automatically generates Non-Functional Requirements (NFRs) and Test Scenarios from User Stories.
+This repository contains the multi-agent architecture implementation using CrewAI for the MIRA project, which automatically generates Non-Functional Requirements (NFRs) and Test Scenarios from User Stories, and was conceived and developed by Ana K. M. Vasconcelos, Edson R. P. Moreira, Rubens A. S. Sousa, Gustavo C. V. Monteiro, Alan P. Bandeira, Jerffeson T. de Souza, Paulo H. M. Maia, and Ismayle S. Santos.
 
 ## Features
 
